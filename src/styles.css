@@ -1,0 +1,8 @@
+body{
+    background-color: #54DAD1;
+}
+
+.grid{
+    display: flex;
+    justify-content: center;
+}
