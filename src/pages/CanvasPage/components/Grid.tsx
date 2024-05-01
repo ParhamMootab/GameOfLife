@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, FC } from "react";
-import greySquare from ''
+import greySquare from './greySquare.png'
 
 interface Cell {
   x: number;
@@ -28,12 +28,13 @@ export const GameGrid: FC = () => {
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           const color = grid[i][j] === 1 ? "white" : "black";
-          context.fillStyle = color;
-          context.fillRect(
+          let image = new Image();
+          image.src = `${process.env.PUBLIC_URL}/assets/greySquare.png`
+          context.drawImage(image,
             i * resolution,
-            j * resolution,
-            resolution - 1,
-            resolution - 1
+            j * resolution
+            // resolution - 1,
+            // resolution - 1
           );
         }
       }
