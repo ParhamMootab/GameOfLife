@@ -1,0 +1,14 @@
+.title{
+    font-family: "Bungee Inline";
+    color: #FFB700;
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+
+}
+.title > p {
+    margin: 0;
+}
+.conwayTitle{
+    font-size: 40px;
+}

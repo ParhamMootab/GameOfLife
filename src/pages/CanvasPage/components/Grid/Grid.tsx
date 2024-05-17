@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect, useRef, FC } from "react";
 
 interface Cell {
@@ -95,29 +96,33 @@ export const GameGrid: FC = () => {
       return newGrid;
     });
   }
-
+  // const buttonAnimationSettings = {
+  //   cellChange: {
+  //     opacity: 0,
+  //   }
+  // };
   return (
     <div className="grid">
-      {/* <canvas
-        ref={canvasRef}
-        width={cols * resolution}
-        height={rows * resolution}
-      /> */}
       <table className="gridTable">
         <tbody>
           {grid.map((row, rowIndex) => (
             <tr>
               {row.map((value, colIndex) => (
                 <td>
-                  <img
-                    src={
-                      value === 1
-                        ? `${process.env.PUBLIC_URL}/assets/redSquare.png`
-                        : `${process.env.PUBLIC_URL}/assets/greySquare.png`
-                    }
-                    width={resolution}
-                    onClick={(e) => cellClicked(rowIndex, colIndex)}
-                  />
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      src={
+                        value === 1
+                          ? `${process.env.PUBLIC_URL}/assets/redSquare.png`
+                          : `${process.env.PUBLIC_URL}/assets/greySquare.png`
+                      }
+                      width={resolution}
+                      onClick={(e) => cellClicked(rowIndex, colIndex)}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1}}
+                      transition={{ duration: 2, type: "spring" }}
+                    />
+                  </AnimatePresence>
                 </td>
               ))}
             </tr>
